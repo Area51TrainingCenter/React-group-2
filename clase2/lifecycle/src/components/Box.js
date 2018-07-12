@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 class Box extends Component {
   componentWillReceiveProps(nextProps) {
@@ -16,6 +17,11 @@ class Box extends Component {
   render() {
     return <h2>Hello {this.props.name}</h2>
   }
+}
+
+Box.propTypes = {
+  name: PropTypes.string.isRequired,
+  id: PropTypes.number,
 }
 
 export default Box;
