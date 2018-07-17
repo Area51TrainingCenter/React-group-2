@@ -1,13 +1,22 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
-const GistsList = ({gists}) => {
-  return <ul className="list-group">
+const GistsList = ({ data: gists }) => {
+  return <div className="row">
     {
-      gists.map(gist => (
-        <li key={gist.id} className="list-group-item">{gist.description}</li>
-      ))
+      gists.map(gist => {
+        return <li key={gist.id} className="card col-md-2 col-xs-3">
+          <h5 className="card-title">{gist.owner.login}</h5>
+          <p className="card-text">{gist.description}</p>
+        </li>
+      })
     }
-  </ul>
+  </div>
 }
+
+GistsList.propTypes = {
+  data: PropTypes.array.isRequired,
+}
+
 
 export default GistsList

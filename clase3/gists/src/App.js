@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import './App.css';
 
 import GistsList from './components/GistsList'
+import withData from './HOC/withData'
 
 class App extends Component {
   constructor() {
@@ -21,9 +21,14 @@ class App extends Component {
   }
 
   render() {
+    const GistsListByUrl = withData('https://api.github.com/users/phuochau/gists')(GistsList)
+    const GistsListByUsername = withData(props => `https://api.github.com/users/${props.username}/gists`)(GistsList)
     return (
       <div className="container">
-        <GistsList gists={this.state.gists} />
+        <GistsListByUrl />
+        <GistsListByUsername username="ryanflorence" />
+        <GistsListByUsername username="paulrrdiaz" />
+        <GistsList data={this.state.gists} />
       </div>
     );
   }
