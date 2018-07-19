@@ -6,13 +6,13 @@ import './App.css';
 import VideosContainer from './containers/VideosContainer'
 
 class App extends Component {
-  render() {
-    return (
-      <div className="container">
-        <VideosContainer />
-      </div>
-    );
-  }
+    render() {
+        return (
+            <div className="container">
+                <VideosContainer />
+            </div>
+        );
+    }
 }
 
 export default App;
