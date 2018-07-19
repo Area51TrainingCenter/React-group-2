@@ -14,7 +14,7 @@ class VideoContainer extends Component {
   }
 
   componentDidMount() {
-    const API = 'AIzaSyCbNNKJgCcCbjSr17s__hzO_eaU5TqGU_0'
+    const API = ''
     const options = { q: 'ironman' }
     search(API, options).then(data => {
       const videos = data.items.map(video => Object.assign({}, {
