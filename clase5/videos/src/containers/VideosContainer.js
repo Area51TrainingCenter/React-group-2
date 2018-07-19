@@ -4,7 +4,6 @@ import _ from 'lodash'
 import VideoList from '../components/VideoList'
 import VideoDetail from '../components/VideoDetail'
 import SearchVideo from '../components/SearchVideo'
-// import fuzzysearch from 'fuzzysearch'
 import { debounce } from 'lodash'
 
 class VideoContainer extends Component {
