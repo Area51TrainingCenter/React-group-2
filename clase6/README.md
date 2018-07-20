@@ -15,6 +15,7 @@
 - [Styled Components](https://github.com/styled-components/styled-components)
 
 ## Links
+- [react starter kit](https://gist.github.com/paulrrdiaz/f5dcbdb6bd8f997a21f2961ddddb6a68)
 - [CSS in JS - video](https://vimeo.com/116209150)
 - [CSS in JS - article](https://speakerdeck.com/vjeux/react-css-in-js)
 - [CSS in JS examples](https://github.com/MicheleBertoli/css-in-js)
