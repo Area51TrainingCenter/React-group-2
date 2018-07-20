@@ -3,6 +3,9 @@ import search from 'youtube-api-v3-search'
 import _ from 'lodash'
 import VideoList from '../components/VideoList'
 import VideoDetail from '../components/VideoDetail'
+import VideoSearch from '../components/VideoSearch'
+
+const API = 'AIzaSyCbNNKJgCcCbjSr17s__hzO_eaU5TqGU_0'
 
 class VideoContainer extends Component {
   constructor() {
@@ -10,39 +13,59 @@ class VideoContainer extends Component {
     this.state = {
       videos: [],
       currentVideo: {},
+      isLoading: false,
     }
   }
 
   componentDidMount() {
-    const API = ''
-    const options = { q: 'ironman' }
-    search(API, options).then(data => {
+    this.callVideos('señora K');
+  }
+
+  callVideos = (term) => {
+    this.setState({ isLoading: true })
+    const opts = {q: term}
+    search(API, opts).then(data => {
       const videos = data.items.map(video => Object.assign({}, {
         id: video.id.videoId,
         title: video.snippet.title,
         description: video.snippet.description,
         image: video.snippet.thumbnails.medium.url,
       }));
-      
-      this.setState({
-        videos,
-        currentVideo: videos[0],
-      })
-    })
-  }
 
-  updateCurrentVideo = id => {
-    const currentVideo = this.state.videos.filter(video => video.id === id)
-    this.setState({ currentVideo: currentVideo[0] })
+      setTimeout(() => {
+        this.setState({
+          videos: videos,
+          currentVideo: videos[0],
+          isLoading: false
+        });
+      }, 1000)
+    });
   }
-
-  
 
   render() {
+    const debounceCallVideos = _.debounce(term => {
+      const q = term.length ? term : 'señora K'
+      this.callVideos(q);
+    }, 300);
+
     return (
-      <div className="row">
-        <VideoDetail {...this.state.currentVideo} />
-        <VideoList updateCurrentVideo={this.updateCurrentVideo} videos={this.state.videos} />
+      <div>
+        <div className="mt-4 mb-4">
+          <VideoSearch onSearchTermChange={debounceCallVideos} />
+        </div>
+        {
+          this.state.isLoading ?
+          <div className="loader">
+            <div className="shadow"></div>
+            <div className="box"></div>
+          </div> :
+          <div className="row">
+            <VideoDetail {...this.state.currentVideo} />
+            <VideoList 
+              updateCurrentVideo={currentVideo => this.setState({ currentVideo })} 
+              videos={this.state.videos} />
+          </div>
+        }
       </div>
     )
   }

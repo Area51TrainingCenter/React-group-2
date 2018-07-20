@@ -1,9 +1,16 @@
 import React from 'react'
 
-const VideoListItem = ({ id, title, image, updateCurrentVideo }) => (
-  <div className="" onClick={() => updateCurrentVideo(id)}>
-    <img className="img-thumbnail rounded" src={image} alt={title} />
-    <h4 className="pull-right">{title}</h4>
+const VideoListItem = ({video, updateCurrentVideo}) => (
+  <div className="list-group-item">
+    <div className="row" onClick={() => updateCurrentVideo(video)}>
+      <div className="col-sm-5">
+        <img 
+          className="img-fluid rounded" 
+          src={video.image} 
+          alt={video.title} />
+      </div>
+      <h6 className="pull-right col-sm-7">{video.title}</h6>
+    </div>
   </div>
 )
 

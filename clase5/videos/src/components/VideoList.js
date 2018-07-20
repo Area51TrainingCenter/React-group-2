@@ -3,10 +3,17 @@ import VideoListItem from './VideoListItem'
 
 const VideoList = ({ videos, updateCurrentVideo }) => {
   return (
-    <div className="col-md-3">
-      {
-        videos.map(video => <VideoListItem key={video.id} {...video} updateCurrentVideo={updateCurrentVideo} />)
-      }
+    <div className="col-md-4">
+      <div className="list-group">
+        {
+          videos.map(video => (
+            <VideoListItem 
+              key={video.id} 
+              video={video} 
+              updateCurrentVideo={updateCurrentVideo} />
+          ))
+        }
+      </div>
     </div>
   )
 }
