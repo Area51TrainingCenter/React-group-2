@@ -15,8 +15,6 @@ export default class App extends Component {
     return (
       <Wrapper>
         <Container>
-          <Button>Regular</Button>
-          <Button primary>Primary</Button>
           <h1>{this.state.message}</h1>
           <button 
             className={styles.buttonSuccess} 
@@ -43,8 +41,4 @@ const Container = styled.div`
   border-radius: 5px;
   padding: 30px;
   text-align: center;
-`
-
-const Button = styled.button`
-  background-color: #0984e3;
 `
