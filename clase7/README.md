@@ -35,4 +35,5 @@ function addTodo(text) {
 ```
 
 ## Links
+- [Examen - To Do List app](https://whimsical.co/VkR7sPF54WNJu9BFetMCrY)
 - [Cuando usar Redux](https://medium.com/@fastphrase/when-to-use-redux-f0aa70b5b1e2)
